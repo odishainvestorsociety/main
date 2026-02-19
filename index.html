@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ===== DESIGN TOKENS ===== */
     :root {
       --navy:       #1a2744;
       --navy-deep:  #0f1a30;
@@ -17,7 +16,6 @@
       --gold-light: #dfc28a;
       --gold-pale:  #f5eed8;
       --slate:      #4a5568;
-      --slate-light:#718096;
       --off-white:  #f8f7f4;
       --white:      #ffffff;
       --border:     #dde2eb;
@@ -33,981 +31,239 @@
       --shadow-lg:  0 8px 32px rgba(26,39,68,0.12);
       --radius:     3px;
     }
-
-    /* ===== RESET ===== */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-sans);
-      color: var(--text-body);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: var(--font-sans); color: var(--text-body); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
     ul { list-style: none; }
 
-    /* ===== UTILITY ===== */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .container--narrow { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
-    .section-label {
-      display: inline-block;
-      font-family: var(--font-sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 600px;
-    }
-    .divider {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.25rem 0;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 0.75rem 1.75rem;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: none;
-    }
-    .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-    }
+    .section-label { display: inline-block; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; max-width: 600px; }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 1.25rem 0; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; padding: 0.75rem 1.75rem; border-radius: var(--radius); cursor: pointer; transition: all 0.2s ease; border: none; text-decoration: none; }
+    .btn-primary { background: var(--navy); color: var(--white); }
     .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy-deep);
-    }
+    .btn-gold { background: var(--gold); color: var(--navy-deep); }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--navy);
-    }
+    .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
     .btn-outline:hover { background: var(--navy); color: var(--white); }
-    .btn-outline-white {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.5);
-    }
+    .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5); }
     .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
 
-    /* ===== ANNOUNCEMENT BAR ===== */
-    .announcement {
-      background: var(--navy-deep);
-      color: rgba(255,255,255,0.85);
-      text-align: center;
-      padding: 0.6rem 1rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.03em;
-    }
+    /* ANNOUNCEMENT */
+    .announcement { background: var(--navy-deep); color: rgba(255,255,255,0.85); text-align: center; padding: 0.6rem 1rem; font-size: 0.8rem; letter-spacing: 0.03em; }
     .announcement strong { color: var(--gold-light); }
+    .announcement a { color: var(--gold-light); text-decoration: underline; font-weight: 600; }
 
-    /* ===== NAVIGATION ===== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-    .navbar__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-    .navbar__brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-    .brand-emblem {
-      width: 42px;
-      height: 42px;
-      background: var(--navy);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .brand-emblem svg { width: 26px; height: 26px; }
+    /* NAVBAR */
+    .navbar { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .navbar__brand { display: flex; align-items: center; gap: 0.85rem; }
+    .brand-emblem { width: 48px; height: 48px; background: var(--navy); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 4px; }
+    .brand-emblem svg { width: 40px; height: 40px; }
     .brand-text { line-height: 1.2; }
-    .brand-name {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0.01em;
-    }
-    .brand-tagline {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .navbar__nav {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .navbar__nav a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--slate);
-      padding: 0.5rem 0.9rem;
-      border-radius: var(--radius);
-      transition: all 0.15s;
-      letter-spacing: 0.01em;
-    }
+    .brand-name { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--navy); letter-spacing: 0.01em; }
+    .brand-tagline { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .navbar__nav { display: flex; align-items: center; gap: 0.25rem; }
+    .navbar__nav a { font-size: 0.85rem; font-weight: 500; color: var(--slate); padding: 0.5rem 0.9rem; border-radius: var(--radius); transition: all 0.15s; letter-spacing: 0.01em; }
     .navbar__nav a:hover { color: var(--navy); background: var(--border-light); }
     .navbar__cta { margin-left: 0.75rem; }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
     .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); transition: all 0.3s; }
 
-    /* ===== HERO ===== */
-    .hero {
-      background: var(--navy-deep);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(200,169,110,0.08) 0%, transparent 50%),
-        repeating-linear-gradient(
-          0deg, transparent, transparent 60px,
-          rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
-        ),
-        repeating-linear-gradient(
-          90deg, transparent, transparent 60px,
-          rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
-        );
-    }
-    .hero__inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 4rem;
-      align-items: center;
-      padding: 5rem 0;
-    }
-    .hero__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(200,169,110,0.15);
-      border: 1px solid rgba(200,169,110,0.3);
-      color: var(--gold-light);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.9rem;
-      border-radius: 2px;
-      margin-bottom: 1.75rem;
-    }
-    .hero__badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-    .hero__headline {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    .hero__headline em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-    .hero__sub {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      max-width: 520px;
-    }
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 300; flex-direction: column; padding: 2rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu__close { align-self: flex-end; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--navy); margin-bottom: 2rem; }
+    .mobile-menu a { font-family: var(--font-serif); font-size: 1.5rem; color: var(--navy); padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); }
+
+    /* HERO */
+    .hero { background: var(--navy-deep); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, transparent 50%), repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px); }
+    .hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center; padding: 5rem 0; }
+    .hero__badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.15); border: 1px solid rgba(200,169,110,0.3); color: var(--gold-light); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 2px; margin-bottom: 1.75rem; }
+    .hero__badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+    .hero__headline { font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; }
+    .hero__headline em { font-style: italic; color: var(--gold-light); }
+    .hero__sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 2.5rem; max-width: 520px; }
     .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero__stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
-      margin-top: 3.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .hero__stat {
-      background: rgba(255,255,255,0.03);
-      padding: 1.25rem 1rem;
-      text-align: center;
-    }
-    .hero__stat-num {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--gold-light);
-      line-height: 1;
-    }
-    .hero__stat-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 0.35rem;
-    }
-    .hero__card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 2rem;
-    }
-    .hero__card-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .hero__card-title {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-    .hero__card-meta {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    .hero__card-meta span {
-      display: block;
-      padding: 0.25rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
+    .hero__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); margin-top: 3.5rem; border: 1px solid rgba(255,255,255,0.08); }
+    .hero__stat { background: rgba(255,255,255,0.03); padding: 1.25rem 1rem; text-align: center; }
+    .hero__stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--gold-light); line-height: 1; }
+    .hero__stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.35rem; }
+    .hero__card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 2rem; }
+    .hero__card-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .hero__card-title { font-family: var(--font-serif); font-size: 1.25rem; color: var(--white); margin-bottom: 0.5rem; }
+    .hero__card-meta { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.6; }
+    .hero__card-meta span { display: block; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .hero__card-meta span:last-child { border-bottom: none; }
 
-    /* ===== TRUST BAR ===== */
-    .trust-bar {
-      background: var(--off-white);
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 0;
-    }
-    .trust-bar__inner {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .trust-bar__label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-    .trust-bar__items {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .trust-bar__item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--slate);
-      font-weight: 500;
-    }
-    .trust-bar__item svg { color: var(--gold); flex-shrink: 0; }
 
-    /* ===== ABOUT ===== */
+    /* ABOUT */
     .about { padding: 6rem 0; background: var(--white); }
-    .about__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about__quote {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      font-style: italic;
-      color: var(--navy);
-      line-height: 1.6;
-      border-left: 3px solid var(--gold);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-    }
-    .about__body {
-      font-size: 0.97rem;
-      color: var(--text-body);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .about__values {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .value-card {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      padding: 1.25rem;
-      border-radius: var(--radius);
-    }
-    .value-card__icon {
-      width: 32px; height: 32px;
-      background: var(--navy);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.75rem;
-    }
+    .about__inner { max-width: 780px; }
+    .about__quote { font-family: var(--font-serif); font-size: 1.35rem; font-style: italic; color: var(--navy); line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 2rem 0; }
+    .about__body { font-size: 0.97rem; color: var(--text-body); line-height: 1.8; margin-bottom: 1rem; }
+    .about__values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .value-card { background: var(--off-white); border: 1px solid var(--border); padding: 1.25rem; border-radius: var(--radius); }
+    .value-card__icon { width: 32px; height: 32px; background: var(--navy); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
     .value-card__icon svg { width: 16px; height: 16px; color: var(--gold); }
-    .value-card h4 {
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--navy);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.3rem;
-    }
+    .value-card h4 { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
     .value-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
-    .about__visual {
-      position: relative;
-    }
-    .about__img-frame {
-      background: var(--navy);
-      border-radius: var(--radius);
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      position: relative;
-    }
-    .about__img-placeholder {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 1rem;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 2rem;
-    }
-    .about__img-placeholder svg { width: 48px; height: 48px; opacity: 0.3; }
-    .about__img-caption {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      font-style: italic;
-    }
-    .about__accreditation {
-      background: var(--gold-pale);
-      border: 1px solid rgba(200,169,110,0.3);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-top: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .about__accreditation svg { color: var(--gold); flex-shrink: 0; }
-    .about__accreditation-text { font-size: 0.8rem; color: var(--navy); line-height: 1.45; }
-    .about__accreditation-text strong { font-weight: 600; display: block; }
-
-    /* ===== MISSION / VISION ===== */
+    /* MISSION */
     .mission { padding: 5rem 0; background: var(--navy-deep); }
-    .mission__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    .mission__block {
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 2.5rem;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.03);
-    }
-    .mission__block-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .mission__block-text {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.7;
-    }
-    .mission__pillars {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-top: 1rem;
-    }
-    .mission__pillar {
-      background: var(--navy-deep);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: background 0.2s;
-    }
+    .mission__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .mission__block { border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; border-radius: var(--radius); background: rgba(255,255,255,0.03); }
+    .mission__block-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .mission__block-text { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; color: var(--white); line-height: 1.7; }
+    .mission__pillars { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); margin-top: 1rem; }
+    .mission__pillar { background: var(--navy-deep); padding: 2rem 1.5rem; text-align: center; transition: background 0.2s; }
     .mission__pillar:hover { background: var(--navy-light); }
-    .mission__pillar-num {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: rgba(200,169,110,0.3);
-      line-height: 1;
-    }
-    .mission__pillar-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--white);
-      margin: 0.5rem 0 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+    .mission__pillar-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300; color: rgba(200,169,110,0.3); line-height: 1; }
+    .mission__pillar-title { font-size: 0.85rem; font-weight: 600; color: var(--white); margin: 0.5rem 0; text-transform: uppercase; letter-spacing: 0.06em; }
     .mission__pillar-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
-    /* ===== PROGRAMS ===== */
+    /* PROGRAMS */
     .programs { padding: 6rem 0; background: var(--white); }
     .programs__header { text-align: center; margin-bottom: 3.5rem; }
     .programs__header .section-sub { margin: 0 auto; }
-    .programs__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .program-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
+    .programs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .program-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
     .program-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-    .program-card__top {
-      background: var(--navy);
-      padding: 1.75rem;
-      position: relative;
-    }
-    .program-card__icon {
-      width: 40px; height: 40px;
-      background: rgba(200,169,110,0.15);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
-    }
+    .program-card__top { background: var(--navy); padding: 1.75rem; position: relative; }
+    .program-card__icon { width: 40px; height: 40px; background: rgba(200,169,110,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
     .program-card__icon svg { width: 20px; height: 20px; color: var(--gold); }
-    .program-card__title {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-    .program-card__tag {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: rgba(200,169,110,0.12);
-      padding: 0.2rem 0.6rem;
-      border-radius: 2px;
-      display: inline-block;
-    }
+    .program-card__title { font-family: var(--font-serif); font-size: 1.2rem; color: var(--white); margin-bottom: 0.5rem; }
+    .program-card__tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: rgba(200,169,110,0.12); padding: 0.2rem 0.6rem; border-radius: 2px; display: inline-block; }
     .program-card__body { padding: 1.5rem; }
     .program-card__desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem; }
     .program-card__topics { margin-bottom: 1.25rem; }
-    .program-card__topics li {
-      font-size: 0.82rem;
-      color: var(--text-body);
-      padding: 0.3rem 0;
-      border-bottom: 1px solid var(--border-light);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .program-card__topics li::before {
-      content: '';
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .program-card__link {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--navy);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: gap 0.2s;
-    }
+    .program-card__topics li { font-size: 0.82rem; color: var(--text-body); padding: 0.3rem 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 0.5rem; }
+    .program-card__topics li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+    .program-card__link { font-size: 0.8rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
     .program-card__link:hover { gap: 0.7rem; color: var(--gold); }
 
-    /* ===== UPCOMING EVENT ===== */
+    /* EVENTS */
     .events { padding: 6rem 0; background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .events__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .events__list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .event-item {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--navy);
-      padding: 1.25rem 1.5rem;
-      border-radius: var(--radius);
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 1.25rem;
-      align-items: start;
-      transition: box-shadow 0.2s;
-    }
+    .event-item { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--navy); padding: 1.25rem 1.5rem; border-radius: var(--radius); display: grid; grid-template-columns: 56px 1fr; gap: 1.25rem; align-items: start; transition: box-shadow 0.2s; }
     .event-item:hover { box-shadow: var(--shadow-md); }
     .event-item.featured { border-left-color: var(--gold); }
-    .event-date {
-      background: var(--navy);
-      border-radius: 2px;
-      text-align: center;
-      padding: 0.5rem;
-      flex-shrink: 0;
-    }
-    .event-date .day {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--gold-light);
-      line-height: 1;
-    }
-    .event-date .month {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-    }
-    .event-info h4 {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--navy);
-      margin-bottom: 0.25rem;
-    }
+    .event-date { background: var(--navy); border-radius: 2px; text-align: center; padding: 0.5rem; flex-shrink: 0; }
+    .event-date .day { font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold-light); line-height: 1; }
+    .event-date .month { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .event-info h4 { font-family: var(--font-serif); font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
     .event-info p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-    .event-badge {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.5rem;
-      border-radius: 2px;
-    }
+    .event-badge { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 2px; }
     .badge-free { background: #e8f5e9; color: var(--success); }
     .badge-reg  { background: #fff3cd; color: #856404; }
-    .events__register {
-      background: var(--navy);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      color: white;
-    }
-    .events__register h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-    }
+    .events__register { background: var(--navy); border-radius: var(--radius); padding: 2.5rem; }
+    .events__register h3 { font-family: var(--font-serif); font-size: 1.5rem; color: var(--white); margin-bottom: 0.75rem; }
     .events__register p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 1.5rem; }
     .events__form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .events__form input, .events__form select {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    .events__form input, .events__form select { width: 100%; padding: 0.7rem 1rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); font-family: var(--font-sans); font-size: 0.85rem; color: var(--white); outline: none; transition: border-color 0.2s; }
     .events__form input::placeholder { color: rgba(255,255,255,0.35); }
     .events__form input:focus, .events__form select:focus { border-color: var(--gold); }
     .events__form select option { background: var(--navy-deep); color: var(--white); }
     .events__form-note { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
 
-    /* ===== RESOURCES ===== */
+    /* RESOURCES */
     .resources { padding: 6rem 0; background: var(--white); }
     .resources__header { margin-bottom: 3rem; }
-    .resources__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-    .resource-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: all 0.2s;
-    }
+    .resources__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .resource-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: all 0.2s; }
     .resource-card:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
-    .resource-card__type {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .resource-card__title {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-      line-height: 1.4;
-    }
+    .resource-card__type { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .resource-card__title { font-family: var(--font-serif); font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.4; }
     .resource-card__desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1rem; }
-    .resource-card__link {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
+    .resource-card__link { font-size: 0.78rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 0.3rem; }
     .resource-card__link:hover { color: var(--gold); }
-    .resources__cta {
-      margin-top: 2.5rem;
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-    }
-    .resources__cta-text h3 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      color: var(--navy);
-      margin-bottom: 0.3rem;
-    }
+    .resources__cta { margin-top: 2.5rem; background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+    .resources__cta-text h3 { font-family: var(--font-serif); font-size: 1.25rem; color: var(--navy); margin-bottom: 0.3rem; }
     .resources__cta-text p { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* ===== TESTIMONIALS ===== */
+    /* TESTIMONIALS */
     .testimonials { padding: 6rem 0; background: var(--off-white); border-top: 1px solid var(--border); }
     .testimonials__header { text-align: center; margin-bottom: 3rem; }
     .testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .testimonial-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '\201C';
-      font-family: var(--font-serif);
-      font-size: 4rem;
-      color: var(--gold-pale);
-      position: absolute;
-      top: 0.5rem; left: 1.25rem;
-      line-height: 1;
-    }
-    .testimonial-card__text {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 0.97rem;
-      color: var(--text-body);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-      padding-top: 1.5rem;
-    }
+    .testimonial-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; position: relative; }
+    .testimonial-card::before { content: '\201C'; font-family: var(--font-serif); font-size: 4rem; color: var(--gold-pale); position: absolute; top: 0.5rem; left: 1.25rem; line-height: 1; }
+    .testimonial-card__text { font-family: var(--font-serif); font-style: italic; font-size: 0.97rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.25rem; padding-top: 1.5rem; }
     .testimonial-card__author { display: flex; align-items: center; gap: 0.75rem; }
-    .author-avatar {
-      width: 40px; height: 40px;
-      background: var(--navy);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--gold-light);
-      font-weight: 600;
-      flex-shrink: 0;
-    }
+    .author-avatar { width: 40px; height: 40px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1rem; color: var(--gold-light); font-weight: 600; flex-shrink: 0; }
     .author-info h5 { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
     .author-info p { font-size: 0.75rem; color: var(--text-muted); }
 
-    /* ===== LEADERSHIP ===== */
-    .leadership { padding: 6rem 0; background: var(--white); }
-    .leadership__header { margin-bottom: 3rem; }
-    .leadership__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .leader-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .leader-card__img {
-      aspect-ratio: 4/3;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .leader-initials {
-      font-family: var(--font-serif);
-      font-size: 3rem;
-      color: rgba(200,169,110,0.4);
-      font-weight: 300;
-    }
-    .leader-card__body { padding: 1.5rem; }
-    .leader-card__name {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--navy);
-      margin-bottom: 0.2rem;
-    }
-    .leader-card__title { font-size: 0.78rem; color: var(--gold); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-    .leader-card__bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    /* LEADERSHIP */
 
-    /* ===== JOIN ===== */
+    /* JOIN */
     .join { padding: 6rem 0; background: var(--navy-deep); position: relative; overflow: hidden; }
-    .join::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .join__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+    .join::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%); pointer-events: none; }
+    .join__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; position: relative; z-index: 1; }
     .join__content .section-label { color: var(--gold); }
     .join__content .section-title { color: var(--white); }
     .join__content .section-sub { color: rgba(255,255,255,0.6); }
     .join__benefits { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-    .join__benefit {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.875rem;
-      padding: 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius);
-    }
-    .join__benefit-icon {
-      width: 32px; height: 32px;
-      background: rgba(200,169,110,0.15);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+    .join__benefit { display: flex; align-items: flex-start; gap: 0.875rem; padding: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); }
+    .join__benefit-icon { width: 32px; height: 32px; background: rgba(200,169,110,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .join__benefit-icon svg { width: 15px; height: 15px; color: var(--gold); }
     .join__benefit-text h4 { font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
     .join__benefit-text p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
-    .join__form-wrap {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-    }
-    .join__form-wrap h3 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: var(--navy);
-      margin-bottom: 0.4rem;
-    }
-    .join__form-wrap p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.75rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 0.4rem; text-transform: uppercase; }
-    .form-input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 0.87rem;
-      color: var(--text-dark);
-      background: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus { border-color: var(--navy); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .join__form-wrap { background: var(--white); border-radius: var(--radius); padding: 2rem; overflow: hidden; }
+    .join__form-wrap h3 { font-family: var(--font-serif); font-size: 1.4rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .join__form-wrap > p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .join__form-wrap iframe { display: block; width: 100%; border: none; border-radius: var(--radius); }
+    .join__form-wrap .form-input { border-color: var(--border); }
+    .join__form-wrap .form-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,39,68,0.07); }
     .form-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.5; }
 
-    /* ===== CONTACT ===== */
+    /* CONTACT */
     .contact { padding: 6rem 0; background: var(--off-white); border-top: 1px solid var(--border); }
     .contact__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
     .contact__info { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
-    .contact__item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .contact__item-icon {
-      width: 36px; height: 36px;
-      background: var(--navy);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+    .contact__item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact__item-icon { width: 36px; height: 36px; background: var(--navy); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contact__item-icon svg { width: 16px; height: 16px; color: var(--gold); }
     .contact__item-text h4 { font-size: 0.78rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
     .contact__item-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
-    .contact__form {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-    }
-    .contact__form h3 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      color: var(--navy);
-      margin-bottom: 0.4rem;
-    }
+    .contact__form { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; }
+    .contact__form h3 { font-family: var(--font-serif); font-size: 1.35rem; color: var(--navy); margin-bottom: 0.4rem; }
     .contact__form > p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 0.4rem; text-transform: uppercase; }
+    .form-input { width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); font-family: var(--font-sans); font-size: 0.87rem; color: var(--text-dark); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: var(--navy); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--navy-deep);
-      padding: 4rem 0 2rem;
-    }
-    .footer__top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 2rem;
-    }
+    /* FOOTER */
+    .footer { background: var(--navy-deep); padding: 4rem 0 2rem; }
+    .footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
     .footer__brand .brand-name { color: var(--white); font-size: 1.1rem; }
     .footer__brand .brand-tagline { color: rgba(255,255,255,0.4); }
-    .footer__brand p {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.7;
-      margin-top: 1rem;
-    }
-    .footer__col h5 {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-    }
+    .footer__brand p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 1rem; }
+    .footer__col h5 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
     .footer__col ul { display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer__col ul li a {
-      font-size: 0.83rem;
-      color: rgba(255,255,255,0.5);
-      transition: color 0.15s;
-    }
+    .footer__col ul li a { font-size: 0.83rem; color: rgba(255,255,255,0.5); transition: color 0.15s; }
     .footer__col ul li a:hover { color: var(--white); }
-    .footer__bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
-    }
-    .footer__disclaimer {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.3);
-      line-height: 1.6;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+    .footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    .footer__disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
 
-    /* ===== REVEAL ANIMATIONS ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ===== MOBILE NAV OVERLAY ===== */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--white);
-      z-index: 300;
-      flex-direction: column;
-      padding: 2rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu__close {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 2rem;
-    }
-    .mobile-menu a {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--navy);
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    /* ===== RESPONSIVE ===== */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .hero__inner { grid-template-columns: 1fr; }
       .hero__card { display: none; }
-      .about__inner { grid-template-columns: 1fr; }
-      .about__visual { order: -1; }
       .mission__pillars { grid-template-columns: repeat(2, 1fr); }
       .programs__grid { grid-template-columns: 1fr 1fr; }
       .resources__grid { grid-template-columns: 1fr 1fr; }
@@ -1019,20 +275,17 @@
       .navbar__cta { display: none; }
       .nav-toggle { display: flex; }
       .hero__inner { padding: 3.5rem 0; }
-      .hero__stats { grid-template-columns: repeat(3, 1fr); }
       .mission__inner { grid-template-columns: 1fr; }
       .programs__grid { grid-template-columns: 1fr; }
       .events__inner { grid-template-columns: 1fr; }
       .resources__grid { grid-template-columns: 1fr 1fr; }
       .testimonials__grid { grid-template-columns: 1fr; }
-      .leadership__grid { grid-template-columns: 1fr; }
       .join__inner { grid-template-columns: 1fr; }
       .contact__inner { grid-template-columns: 1fr; }
       .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer__bottom { flex-direction: column; text-align: center; }
       .resources__cta { flex-direction: column; align-items: flex-start; }
       .about__values { grid-template-columns: 1fr; }
-      .trust-bar__inner { gap: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
       .hero__actions { flex-direction: column; }
     }
@@ -1041,33 +294,295 @@
       .resources__grid { grid-template-columns: 1fr; }
       .hero__stats { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ===== PORTFOLIO REVIEW ===== */
+    .portfolio-review {
+      padding: 6rem 0;
+      background: var(--navy-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-review__bg-pattern {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg, transparent, transparent 60px,
+          rgba(200,169,110,0.03) 60px, rgba(200,169,110,0.03) 61px
+        ),
+        repeating-linear-gradient(
+          90deg, transparent, transparent 60px,
+          rgba(200,169,110,0.03) 60px, rgba(200,169,110,0.03) 61px
+        );
+      pointer-events: none;
+    }
+    .portfolio-review::before {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .portfolio-review__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    /* Left content */
+    .portfolio-review__content .divider { background: var(--gold); }
+    .portfolio-review__promises {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .portfolio-review__promise {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .portfolio-review__promise-icon {
+      width: 36px; height: 36px;
+      background: rgba(200,169,110,0.12);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .portfolio-review__promise-icon svg {
+      width: 16px; height: 16px;
+      color: var(--gold);
+    }
+    .portfolio-review__promise h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .portfolio-review__promise p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+    /* Right form card */
+    .portfolio-review__form-wrap {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+    }
+    .portfolio-review__form-header {
+      background: var(--navy);
+      padding: 1.75rem 2rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .portfolio-review__form-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+      background: var(--gold);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 0.85rem;
+    }
+    .portfolio-review__form-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-review__form-header p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    /* Form fields */
+    .portfolio-review__form-wrap form {
+      padding: 1.75rem 2rem 2rem;
+    }
+    .pr-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .pr-form-group { margin-bottom: 1rem; }
+    .pr-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .pr-input {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 0.87rem;
+      color: var(--text-dark);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pr-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26,39,68,0.07);
+    }
+    .pr-input::placeholder { color: #b0b8c8; }
+    /* Checkbox grid */
+    .pr-checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .pr-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.84rem;
+      color: var(--text-body);
+      cursor: pointer;
+      padding: 0.45rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .pr-checkbox:hover { border-color: var(--navy); background: var(--border-light); }
+    .pr-checkbox input[type="checkbox"] {
+      width: 14px; height: 14px;
+      accent-color: var(--navy);
+      flex-shrink: 0;
+    }
+    /* Submit button */
+    .pr-submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+    .pr-submit-btn:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+    }
+    .pr-note {
+      font-size: 0.71rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-top: 0.85rem;
+      text-align: center;
+    }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .portfolio-review__inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .portfolio-review { padding: 4rem 0; }
+      .pr-form-row { grid-template-columns: 1fr; }
+      .pr-checkbox-grid { grid-template-columns: 1fr; }
+      .portfolio-review__form-wrap form { padding: 1.5rem; }
+      .portfolio-review__form-header { padding: 1.5rem; }
+    }
+
   </style>
 </head>
 <body>
 
   <!-- ANNOUNCEMENT -->
   <div class="announcement">
-    <strong>Upcoming:</strong> Free Workshop on "Mutual Fund Basics for First-Time Investors" — 25th July 2025, Bhubaneswar &nbsp;·&nbsp;
-    <a href="#events" style="color:var(--gold-light); text-decoration: underline; font-weight:600;">Register Now →</a>
+    <strong>Upcoming:</strong> Free Workshop on "Mutual Fund Basics for First-Time Investors" — 25th July 2025, Bhubaneswar &nbsp;&middot;&nbsp;
+    <a href="#events">Register Now &rarr;</a>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="container">
       <div class="navbar__inner">
         <a href="#home" class="navbar__brand">
           <div class="brand-emblem">
-            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="14" width="4" height="9" fill="#c8a96e"/>
-              <rect x="9" y="9" width="4" height="14" fill="#c8a96e" opacity="0.75"/>
-              <rect x="15" y="5" width="4" height="18" fill="#c8a96e" opacity="0.55"/>
-              <rect x="21" y="2" width="2" height="21" fill="#c8a96e" opacity="0.4"/>
-              <path d="M4 14 L11 9 L17 5 L22 2" stroke="#c8a96e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gG" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" style="stop-color:#c8a96e"/>
+                  <stop offset="100%" style="stop-color:#dfc28a"/>
+                </linearGradient>
+              </defs>
+              <!-- Outer rim -->
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#c8a96e" stroke-width="3" opacity="0.9"/>
+              <!-- Inner ring -->
+              <circle cx="50" cy="50" r="24" fill="none" stroke="#c8a96e" stroke-width="1" opacity="0.4"/>
+              <!-- Hub -->
+              <circle cx="50" cy="50" r="8" fill="none" stroke="#c8a96e" stroke-width="2.5" opacity="0.9"/>
+              <circle cx="50" cy="50" r="5" fill="#c8a96e" opacity="0.35"/>
+              <!-- 8 main spokes -->
+              <line x1="50" y1="42" x2="50" y2="26" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="55.66" y1="44.34" x2="66.97" y2="33.03" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="58" y1="50" x2="74" y2="50" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="55.66" y1="55.66" x2="66.97" y2="66.97" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="50" y1="58" x2="50" y2="74" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="44.34" y1="55.66" x2="33.03" y2="66.97" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="42" y1="50" x2="26" y2="50" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="44.34" y1="44.34" x2="33.03" y2="33.03" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- 8 minor spokes -->
+              <line x1="52.83" y1="42.83" x2="61.21" y2="34.44" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="57.17" y1="47.17" x2="69.56" y2="38.79" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="57.17" y1="52.83" x2="69.56" y2="61.21" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="52.83" y1="57.17" x2="61.21" y2="65.56" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="47.17" y1="57.17" x2="38.79" y2="65.56" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="42.83" y1="52.83" x2="30.44" y2="61.21" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="42.83" y1="47.17" x2="30.44" y2="38.79" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="47.17" y1="42.83" x2="38.79" y2="34.44" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <!-- Rim bead dots (16 every 22.5°) -->
+              <circle cx="50"    cy="12"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="64.14" cy="15.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="75.15" cy="24.85" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="82.14" cy="37.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="88"    cy="50"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="82.14" cy="62.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="75.15" cy="75.15" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="64.14" cy="84.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="50"    cy="88"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="35.86" cy="84.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="24.85" cy="75.15" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="17.86" cy="62.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="12"    cy="50"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="17.86" cy="37.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="24.85" cy="24.85" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="35.86" cy="15.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <!-- Growth line -->
+              <polyline points="38,61 43.5,55.5 50,50 56.5,44.5 62,39"
+                fill="none" stroke="url(#gG)" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+              <polygon points="62,39 57.5,38.5 61,43" fill="#dfc28a"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Odisha Investors Society</div>
-            <div class="brand-tagline">Investor Education · Since 2015</div>
+            <div class="brand-tagline">Investor Education &middot; Since 2015</div>
           </div>
         </a>
         <nav class="navbar__nav">
@@ -1075,8 +590,8 @@
           <a href="#programs">Programs</a>
           <a href="#events">Events</a>
           <a href="#resources">Resources</a>
-          <a href="#leadership">Leadership</a>
           <a href="#contact">Contact</a>
+          <a href="#portfolio-review" style="color:var(--gold);font-weight:600;">Free Review &#9733;</a>
         </nav>
         <a href="#join" class="btn btn-primary navbar__cta">Become a Member</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
@@ -1088,14 +603,14 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu__close" id="menuClose">✕</button>
+    <button class="mobile-menu__close" id="menuClose">&#10005;</button>
     <a href="#about" onclick="closeMobile()">About</a>
     <a href="#programs" onclick="closeMobile()">Programs</a>
     <a href="#events" onclick="closeMobile()">Events</a>
     <a href="#resources" onclick="closeMobile()">Resources</a>
-    <a href="#leadership" onclick="closeMobile()">Leadership</a>
+    <a href="#portfolio-review" onclick="closeMobile()" style="color:var(--gold);">Free Portfolio Review</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
-    <a href="#join" onclick="closeMobile()" style="color:var(--gold); margin-top:1rem;">Become a Member →</a>
+    <a href="#join" onclick="closeMobile()" style="color:var(--gold);margin-top:1rem;">Become a Member &rarr;</a>
   </div>
 
   <!-- HERO -->
@@ -1103,75 +618,37 @@
     <div class="container">
       <div class="hero__inner">
         <div class="hero__content">
-          <div class="hero__badge">Non-Profit Organization · Odisha, India</div>
-          <h1 class="hero__headline">
-            Empowering Odisha's Investors with <em>Knowledge, Clarity, and Confidence</em>
-          </h1>
-          <p class="hero__sub">
-            The Odisha Investors Society is a non-profit organization dedicated to financial literacy, investor education, and helping every person in Odisha make sound, informed financial decisions.
-          </p>
+          <div class="hero__badge">Non-Profit Organization &middot; Odisha, India</div>
+          <h1 class="hero__headline">Empowering Odisha's Investors with <em>Knowledge, Clarity, and Confidence</em></h1>
+          <p class="hero__sub">The Odisha Investors Society is a non-profit organization dedicated to financial literacy, investor education, and helping every person in Odisha make sound, informed financial decisions.</p>
           <div class="hero__actions">
             <a href="#programs" class="btn btn-gold">Explore Our Programs</a>
-            <a href="#join" class="btn btn-outline-white">Become a Member</a>
+            <a href="#portfolio-review" class="btn btn-outline-white">Free Portfolio Review</a>
+            <a href="#join" class="btn btn-outline-white" style="border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.7);">Become a Member</a>
           </div>
           <div class="hero__stats">
-            <div class="hero__stat">
-              <div class="hero__stat-num">12,000+</div>
-              <div class="hero__stat-label">Investors Educated</div>
-            </div>
-            <div class="hero__stat">
-              <div class="hero__stat-num">200+</div>
-              <div class="hero__stat-label">Workshops Held</div>
-            </div>
-            <div class="hero__stat">
-              <div class="hero__stat-num">10 Yrs</div>
-              <div class="hero__stat-label">Of Service</div>
-            </div>
+            <div class="hero__stat"><div class="hero__stat-num">2,500+</div><div class="hero__stat-label">Investors Educated</div></div>
+            <div class="hero__stat"><div class="hero__stat-num">50+</div><div class="hero__stat-label">Workshops Held</div></div>
+            <div class="hero__stat"><div class="hero__stat-num">10 Yrs</div><div class="hero__stat-label">Of Service</div></div>
           </div>
         </div>
         <div class="hero__card">
           <div class="hero__card-label">Next Workshop</div>
           <div class="hero__card-title">Mutual Funds for Beginners</div>
           <div class="hero__card-meta">
-            <span>📅 &nbsp;25 July 2025, Saturday</span>
-            <span>⏰ &nbsp;10:00 AM – 1:00 PM</span>
-            <span>📍 &nbsp;FICCI Auditorium, Bhubaneswar</span>
-            <span>👤 &nbsp;Open to All · Free Entry</span>
-            <span>🔖 &nbsp;Registration Required</span>
+            <span>&#128197;&nbsp; 25 July 2025, Saturday</span>
+            <span>&#9200;&nbsp; 10:00 AM &ndash; 1:00 PM</span>
+            <span>&#128205;&nbsp; FICCI Auditorium, Bhubaneswar</span>
+            <span>&#128100;&nbsp; Open to All &middot; Free Entry</span>
+            <span>&#128278;&nbsp; Registration Required</span>
           </div>
-          <a href="#events" class="btn btn-gold" style="width:100%; justify-content:center;">Reserve Your Seat</a>
+          <a href="#events" class="btn btn-gold" style="width:100%;justify-content:center;">Reserve Your Seat</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="container">
-      <div class="trust-bar__inner">
-        <span class="trust-bar__label">Recognized by</span>
-        <div class="trust-bar__items">
-          <div class="trust-bar__item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            SEBI Investor Education Partner
-          </div>
-          <div class="trust-bar__item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            Registered Non-Profit (Sec. 8 Company)
-          </div>
-          <div class="trust-bar__item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            AMFI Awareness Program Affiliate
-          </div>
-          <div class="trust-bar__item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            Featured in The Hindu, OTV, Odisha Bytes
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container">
@@ -1180,178 +657,299 @@
           <span class="section-label">Who We Are</span>
           <h2 class="section-title">Odisha's Trusted Platform for Financial Education</h2>
           <div class="divider"></div>
-          <blockquote class="about__quote">
-            "An informed investor is a protected investor. Our mission is to ensure no one in Odisha makes a financial decision out of ignorance or fear."
-          </blockquote>
-          <p class="about__body">
-            Founded in 2015, the Odisha Investors Society is a registered non-profit organization committed to improving financial literacy among retail investors, working professionals, and first-time investors across Odisha. We are not affiliated with any brokerage, fund house, or financial product distributor.
-          </p>
-          <p class="about__body">
-            We conduct workshops, seminars, and awareness programs covering personal finance, equity investing, mutual funds, taxation, and retirement planning — all at no cost or nominal cost to participants. Our only goal is education.
-          </p>
+          <blockquote class="about__quote">"An informed investor is a protected investor. Our mission is to ensure no one in Odisha makes a financial decision out of ignorance or fear."</blockquote>
+          <p class="about__body">Founded in 2015, the Odisha Investors Society is a registered non-profit organization committed to improving financial literacy among retail investors, working professionals, and first-time investors across Odisha. We are not affiliated with any brokerage, fund house, or financial product distributor.</p>
+          <p class="about__body">We conduct workshops, seminars, and awareness programs covering personal finance, equity investing, mutual funds, taxation, and retirement planning &mdash; all at no cost or nominal cost to participants. Our only goal is education.</p>
           <div class="about__values">
             <div class="value-card">
-              <div class="value-card__icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-              </div>
-              <h4>Independence</h4>
-              <p>No product sales. No commissions. Pure education.</p>
+              <div class="value-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+              <h4>Independence</h4><p>No product sales. No commissions. Pure education.</p>
             </div>
             <div class="value-card">
-              <div class="value-card__icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-              </div>
-              <h4>Education First</h4>
-              <p>Practical, unbiased financial knowledge for all.</p>
+              <div class="value-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+              <h4>Education First</h4><p>Practical, unbiased financial knowledge for all.</p>
             </div>
             <div class="value-card">
-              <div class="value-card__icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <h4>Community</h4>
-              <p>A network of investors supporting each other.</p>
+              <div class="value-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+              <h4>Community</h4><p>A network of investors supporting each other.</p>
             </div>
             <div class="value-card">
-              <div class="value-card__icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
-              </div>
-              <h4>Accessibility</h4>
-              <p>Free or low-cost programs for all income levels.</p>
+              <div class="value-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></div>
+              <h4>Accessibility</h4><p>Free or low-cost programs for all income levels.</p>
             </div>
           </div>
         </div>
-        <div class="reveal reveal-delay-2">
-          <div class="about__visual">
-            <div class="about__img-frame">
-              <div class="about__img-placeholder">
-                <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                <span>Workshop & seminar photos<br><em>to be added here</em></span>
-              </div>
-            </div>
-            <p class="about__img-caption">OIS Annual Investor Awareness Seminar, Bhubaneswar (2024)</p>
-            <div class="about__accreditation">
-              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              <div class="about__accreditation-text">
-                <strong>Registered Non-Profit Organization</strong>
-                Incorporated under Section 8 of the Companies Act, 2013. CIN: U85300OR2015NPL023XXX
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- MISSION & VISION -->
+  <!-- MISSION -->
   <section class="mission" id="mission">
     <div class="container">
       <div class="mission__inner">
         <div class="mission__block reveal">
           <div class="mission__block-label">Our Mission</div>
-          <p class="mission__block-text">
-            To democratize financial education across Odisha by conducting accessible, unbiased, and practical programs that empower every citizen — regardless of income, background, or education — to make sound financial decisions and protect their wealth.
-          </p>
+          <p class="mission__block-text">To democratize financial education across Odisha by conducting accessible, unbiased, and practical programs that empower every citizen &mdash; regardless of income, background, or education &mdash; to make sound financial decisions and protect their wealth.</p>
         </div>
         <div class="mission__block reveal reveal-delay-1">
           <div class="mission__block-label">Our Vision</div>
-          <p class="mission__block-text">
-            A financially literate Odisha where every investor understands their rights, recognizes investment risks, and participates confidently in India's growth story — free from fraud, misinformation, and exploitative financial advice.
-          </p>
+          <p class="mission__block-text">A financially literate Odisha where every investor understands their rights, recognizes investment risks, and participates confidently in India's growth story &mdash; free from fraud, misinformation, and exploitative financial advice.</p>
         </div>
         <div class="mission__pillars reveal">
-          <div class="mission__pillar">
-            <div class="mission__pillar-num">01</div>
-            <div class="mission__pillar-title">Educate</div>
-            <div class="mission__pillar-desc">Free workshops and seminars on investing, taxation, and personal finance</div>
-          </div>
-          <div class="mission__pillar">
-            <div class="mission__pillar-num">02</div>
-            <div class="mission__pillar-title">Protect</div>
-            <div class="mission__pillar-desc">Awareness about fraudulent schemes, SEBI grievances, and investor rights</div>
-          </div>
-          <div class="mission__pillar">
-            <div class="mission__pillar-num">03</div>
-            <div class="mission__pillar-title">Connect</div>
-            <div class="mission__pillar-desc">Build a community of informed investors who learn from each other</div>
-          </div>
-          <div class="mission__pillar">
-            <div class="mission__pillar-num">04</div>
-            <div class="mission__pillar-title">Empower</div>
-            <div class="mission__pillar-desc">Help individuals take control of their financial future with confidence</div>
-          </div>
+          <div class="mission__pillar"><div class="mission__pillar-num">01</div><div class="mission__pillar-title">Educate</div><div class="mission__pillar-desc">Free workshops and seminars on investing, taxation, and personal finance</div></div>
+          <div class="mission__pillar"><div class="mission__pillar-num">02</div><div class="mission__pillar-title">Protect</div><div class="mission__pillar-desc">Awareness about fraudulent schemes, SEBI grievances, and investor rights</div></div>
+          <div class="mission__pillar"><div class="mission__pillar-num">03</div><div class="mission__pillar-title">Connect</div><div class="mission__pillar-desc">Build a community of informed investors who learn from each other</div></div>
+          <div class="mission__pillar"><div class="mission__pillar-num">04</div><div class="mission__pillar-title">Empower</div><div class="mission__pillar-desc">Help individuals take control of their financial future with confidence</div></div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- PORTFOLIO REVIEW -->
+  <section class="portfolio-review" id="portfolio-review">
+    <div class="portfolio-review__bg-pattern"></div>
+    <div class="container">
+      <div class="portfolio-review__inner">
+
+        <!-- LEFT: Pitch -->
+        <div class="portfolio-review__content reveal">
+          <span class="section-label" style="color:var(--gold);">Free Service</span>
+          <h2 class="section-title" style="color:var(--white);">Get Your Portfolio<br>Reviewed — For Free</h2>
+          <div class="divider"></div>
+          <p class="section-sub" style="color:rgba(255,255,255,0.65); max-width:480px;">
+            As part of our mission to promote financial literacy and investor protection, the Odisha Investors Society offers a <strong style="color:var(--gold-light);">free 30-minute portfolio review call</strong> with a SEBI-registered expert.
+          </p>
+          <p class="section-sub" style="color:rgba(255,255,255,0.65); max-width:480px; margin-top:1rem;">
+            No product sales. No hidden agenda. Just an honest, unbiased evaluation of your current investments and actionable feedback to help you invest smarter.
+          </p>
+
+          <div class="portfolio-review__promises">
+            <div class="portfolio-review__promise">
+              <div class="portfolio-review__promise-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <h4>100% Free, No Strings Attached</h4>
+                <p>We will never pitch a product, recommend a broker, or ask for a commission.</p>
+              </div>
+            </div>
+            <div class="portfolio-review__promise">
+              <div class="portfolio-review__promise-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <div>
+                <h4>Your Data is Confidential</h4>
+                <p>Portfolio details shared are used solely for the review call and never stored or shared.</p>
+              </div>
+            </div>
+            <div class="portfolio-review__promise">
+              <div class="portfolio-review__promise-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div>
+                <h4>Reviewed by Qualified Experts</h4>
+                <p>All reviews are conducted by SEBI-registered advisors and Chartered Accountants.</p>
+              </div>
+            </div>
+            <div class="portfolio-review__promise">
+              <div class="portfolio-review__promise-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h4>You Pick the Time</h4>
+                <p>We schedule the call at your convenience — weekday evenings and weekends available.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="portfolio-review__form-wrap reveal reveal-delay-2">
+          <div class="portfolio-review__form-header">
+            <div class="portfolio-review__form-badge">Limited Slots Available Each Month</div>
+            <h3>Book Your Free Review</h3>
+            <p>Fill in the details below and our team will reach out within 2 working days to schedule your call.</p>
+          </div>
+
+          <form id="portfolioReviewForm" onsubmit="return handlePortfolioReview(event)">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE"/>
+            <input type="hidden" name="subject" value="New Portfolio Review Request — OIS Website"/>
+            <input type="hidden" name="from_name" value="Odisha Investors Society Website"/>
+            <input type="checkbox" name="botcheck" style="display:none;"/>
+
+            <div class="pr-form-row">
+              <div class="pr-form-group">
+                <label class="pr-label">First Name *</label>
+                <input type="text" name="first_name" class="pr-input" placeholder="Ravi" required/>
+              </div>
+              <div class="pr-form-group">
+                <label class="pr-label">Last Name *</label>
+                <input type="text" name="last_name" class="pr-input" placeholder="Sharma" required/>
+              </div>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">Mobile Number *</label>
+              <input type="tel" name="mobile" class="pr-input" placeholder="+91 98XXXXXXXX" required/>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">Email Address *</label>
+              <input type="email" name="email" class="pr-input" placeholder="ravi@example.com" required/>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">City *</label>
+              <select name="city" class="pr-input" required>
+                <option value="" disabled selected>Select your city</option>
+                <option>Bhubaneswar</option>
+                <option>Cuttack</option>
+                <option>Sambalpur</option>
+                <option>Berhampur</option>
+                <option>Rourkela</option>
+                <option>Puri</option>
+                <option>Balasore</option>
+                <option>Other (Odisha)</option>
+                <option>Outside Odisha</option>
+              </select>
+            </div>
+
+            <div class="pr-form-row">
+              <div class="pr-form-group">
+                <label class="pr-label">Total Portfolio Size (approx.)</label>
+                <select name="portfolio_size" class="pr-input">
+                  <option value="" disabled selected>Select range</option>
+                  <option>Below &#8377;1 Lakh</option>
+                  <option>&#8377;1 &ndash; 5 Lakhs</option>
+                  <option>&#8377;5 &ndash; 20 Lakhs</option>
+                  <option>&#8377;20 &ndash; 50 Lakhs</option>
+                  <option>Above &#8377;50 Lakhs</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="pr-form-group">
+                <label class="pr-label">Years of Investing Experience</label>
+                <select name="experience" class="pr-input">
+                  <option value="" disabled selected>Select</option>
+                  <option>Just starting out</option>
+                  <option>Less than 1 year</option>
+                  <option>1 &ndash; 3 years</option>
+                  <option>3 &ndash; 7 years</option>
+                  <option>7+ years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">What does your portfolio currently include? *</label>
+              <div class="pr-checkbox-grid">
+                <label class="pr-checkbox"><input type="checkbox" name="has_mf" value="Mutual Funds"/><span>Mutual Funds</span></label>
+                <label class="pr-checkbox"><input type="checkbox" name="has_stocks" value="Direct Stocks"/><span>Direct Stocks</span></label>
+                <label class="pr-checkbox"><input type="checkbox" name="has_fd" value="FD / RD"/><span>FD / RD</span></label>
+                <label class="pr-checkbox"><input type="checkbox" name="has_nps" value="NPS / PPF"/><span>NPS / PPF</span></label>
+                <label class="pr-checkbox"><input type="checkbox" name="has_insurance" value="Insurance / ULIP"/><span>Insurance / ULIP</span></label>
+                <label class="pr-checkbox"><input type="checkbox" name="has_gold" value="Gold / Real Estate"/><span>Gold / Real Estate</span></label>
+              </div>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">What would you like help with?</label>
+              <textarea name="help_needed" class="pr-input" rows="3"
+                placeholder="e.g. I want to know if my mutual fund choices are right for my goals, or if I am over-insured..."
+                style="resize:vertical;"></textarea>
+            </div>
+
+            <div class="pr-form-group">
+              <label class="pr-label">Preferred Time for the Call</label>
+              <select name="preferred_time" class="pr-input">
+                <option value="" disabled selected>Select preference</option>
+                <option>Weekday Morning (9 AM &ndash; 12 PM)</option>
+                <option>Weekday Afternoon (12 PM &ndash; 4 PM)</option>
+                <option>Weekday Evening (5 PM &ndash; 8 PM)</option>
+                <option>Saturday Morning</option>
+                <option>Saturday / Sunday Afternoon</option>
+                <option>Any time works for me</option>
+              </select>
+            </div>
+
+            <div id="portfolioReviewStatus" style="display:none; padding:0.85rem 1rem; border-radius:3px; font-size:0.85rem; margin-bottom:1rem;"></div>
+
+            <button type="submit" id="portfolioReviewBtn" class="pr-submit-btn">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              Request My Free Portfolio Review
+            </button>
+            <p class="pr-note">By submitting, you agree that the information shared will be used only for this review. We will never sell your data or contact you for sales purposes.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- PROGRAMS -->
   <section class="programs" id="programs">
     <div class="container">
       <div class="programs__header reveal">
         <span class="section-label">What We Offer</span>
-        <h2 class="section-title">Educational Programs & Initiatives</h2>
-        <div class="divider" style="margin: 1rem auto;"></div>
-        <p class="section-sub">All our programs are designed for practical understanding — not theoretical textbooks. Our faculty comprises SEBI-registered practitioners, CAs, CFPs, and experienced investors.</p>
+        <h2 class="section-title">Educational Programs &amp; Initiatives</h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <p class="section-sub">All our programs are designed for practical understanding &mdash; not theoretical textbooks. Our faculty comprises SEBI-registered practitioners, CAs, CFPs, and experienced investors.</p>
       </div>
       <div class="programs__grid">
         <div class="program-card reveal">
           <div class="program-card__top">
-            <div class="program-card__icon">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            </div>
+            <div class="program-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
             <span class="program-card__tag">Flagship Program</span>
             <h3 class="program-card__title">Investor Awareness Workshops</h3>
           </div>
           <div class="program-card__body">
-            <p class="program-card__desc">Our most popular program — held monthly across Bhubaneswar, Cuttack, Sambalpur, Berhampur, and Rourkela. Designed for first-time and retail investors.</p>
+            <p class="program-card__desc">Our most popular program &mdash; held monthly across Bhubaneswar, Cuttack, Sambalpur, Berhampur, and Rourkela. Designed for first-time and retail investors.</p>
             <ul class="program-card__topics">
-              <li>Basics of equity & debt markets</li>
+              <li>Basics of equity &amp; debt markets</li>
               <li>How mutual funds work</li>
               <li>Reading a company balance sheet</li>
               <li>Understanding risk and return</li>
               <li>How to avoid investment fraud</li>
             </ul>
-            <a href="#events" class="program-card__link">See upcoming workshops →</a>
+            <a href="#events" class="program-card__link">See upcoming workshops &rarr;</a>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-1">
           <div class="program-card__top">
-            <div class="program-card__icon">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            </div>
+            <div class="program-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
             <span class="program-card__tag">Annual Program</span>
-            <h3 class="program-card__title">Taxation & Financial Planning Seminar</h3>
+            <h3 class="program-card__title">Taxation &amp; Financial Planning Seminar</h3>
           </div>
           <div class="program-card__body">
             <p class="program-card__desc">An in-depth annual seminar conducted before and after the tax filing season. Led by Chartered Accountants and Registered Financial Planners.</p>
             <ul class="program-card__topics">
-              <li>Income tax planning & filing</li>
+              <li>Income tax planning &amp; filing</li>
               <li>Capital gains tax on investments</li>
               <li>Tax-saving investment options</li>
               <li>NPS, PPF, ELSS strategies</li>
               <li>ITR filing guidance</li>
             </ul>
-            <a href="#events" class="program-card__link">View seminar schedule →</a>
+            <a href="#events" class="program-card__link">View seminar schedule &rarr;</a>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-2">
           <div class="program-card__top">
-            <div class="program-card__icon">
-              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-            </div>
+            <div class="program-card__icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
             <span class="program-card__tag">College Outreach</span>
             <h3 class="program-card__title">Youth Investor Education Program</h3>
           </div>
           <div class="program-card__body">
-            <p class="program-card__desc">Delivered at colleges and universities in Odisha, this program prepares young adults (age 18–25) to start their investing journey on solid footing.</p>
+            <p class="program-card__desc">Delivered at colleges and universities in Odisha, this program prepares young adults (age 18&ndash;25) to start their investing journey on solid footing.</p>
             <ul class="program-card__topics">
               <li>Why start investing early</li>
               <li>Power of compounding</li>
-              <li>SIP — starting with ₹500/month</li>
+              <li>SIP &mdash; starting with Rs.500/month</li>
               <li>Digital investing platforms</li>
               <li>Common mistakes to avoid</li>
             </ul>
-            <a href="#contact" class="program-card__link">Partner with us →</a>
+            <a href="#contact" class="program-card__link">Partner with us &rarr;</a>
           </div>
         </div>
       </div>
@@ -1366,66 +964,46 @@
           <span class="section-label reveal">Schedule</span>
           <h2 class="section-title reveal">Upcoming Events</h2>
           <div class="divider reveal"></div>
-          <p class="section-sub reveal" style="margin-bottom: 0;">All events are free or offered at a nominal fee. Prior registration is appreciated to help us plan seating and materials.</p>
+          <p class="section-sub reveal" style="margin-bottom:0;">All events are free or offered at a nominal fee. Prior registration is appreciated to help us plan seating and materials.</p>
           <div class="events__list">
             <div class="event-item featured reveal">
               <div class="event-date"><div class="day">25</div><div class="month">Jul</div></div>
-              <div class="event-info">
-                <h4>Mutual Funds for Beginners</h4>
-                <p>FICCI Auditorium, Bhubaneswar · 10 AM – 1 PM</p>
-                <span class="event-badge badge-free">Free Entry</span>
-              </div>
+              <div class="event-info"><h4>Mutual Funds for Beginners</h4><p>FICCI Auditorium, Bhubaneswar &middot; 10 AM &ndash; 1 PM</p><span class="event-badge badge-free">Free Entry</span></div>
             </div>
             <div class="event-item reveal reveal-delay-1">
               <div class="event-date"><div class="day">10</div><div class="month">Aug</div></div>
-              <div class="event-info">
-                <h4>Tax Planning for Salaried Professionals</h4>
-                <p>Hotel Mayfair Lagoon, Bhubaneswar · 9:30 AM – 12:30 PM</p>
-                <span class="event-badge badge-reg">₹200 Nominal Fee</span>
-              </div>
+              <div class="event-info"><h4>Tax Planning for Salaried Professionals</h4><p>Hotel Mayfair Lagoon, Bhubaneswar &middot; 9:30 AM &ndash; 12:30 PM</p><span class="event-badge badge-reg">Rs.200 Nominal Fee</span></div>
             </div>
             <div class="event-item reveal reveal-delay-2">
               <div class="event-date"><div class="day">22</div><div class="month">Aug</div></div>
-              <div class="event-info">
-                <h4>Stock Market Basics — Cuttack Chapter</h4>
-                <p>Shanti Stupa Hall, Cuttack · 5 PM – 7 PM</p>
-                <span class="event-badge badge-free">Free Entry</span>
-              </div>
+              <div class="event-info"><h4>Stock Market Basics &mdash; Cuttack Chapter</h4><p>Shanti Stupa Hall, Cuttack &middot; 5 PM &ndash; 7 PM</p><span class="event-badge badge-free">Free Entry</span></div>
             </div>
             <div class="event-item reveal reveal-delay-3">
               <div class="event-date"><div class="day">14</div><div class="month">Sep</div></div>
-              <div class="event-info">
-                <h4>Retirement Planning at Every Age</h4>
-                <p>Sambalpur Chapter · Venue TBA</p>
-                <span class="event-badge badge-free">Free Entry</span>
-              </div>
+              <div class="event-info"><h4>Retirement Planning at Every Age</h4><p>Sambalpur Chapter &middot; Venue TBA</p><span class="event-badge badge-free">Free Entry</span></div>
             </div>
           </div>
         </div>
         <div class="events__register reveal reveal-delay-2">
           <h3>Register for an Event</h3>
-          <p>Fill in your details and we'll confirm your seat via WhatsApp/email. No payment required for free events.</p>
+          <p>Fill in your details and we will confirm your seat via WhatsApp/email. No payment required for free events.</p>
           <form class="events__form" onsubmit="return handleRegistration(event)">
             <input type="text" placeholder="Full Name *" required/>
             <input type="tel" placeholder="Mobile Number *" required/>
             <input type="email" placeholder="Email Address"/>
             <select required>
               <option value="" disabled selected>Select Event *</option>
-              <option>Mutual Funds for Beginners — 25 Jul</option>
-              <option>Tax Planning for Salaried Professionals — 10 Aug</option>
-              <option>Stock Market Basics (Cuttack) — 22 Aug</option>
-              <option>Retirement Planning — 14 Sep</option>
+              <option>Mutual Funds for Beginners &mdash; 25 Jul</option>
+              <option>Tax Planning for Salaried Professionals &mdash; 10 Aug</option>
+              <option>Stock Market Basics (Cuttack) &mdash; 22 Aug</option>
+              <option>Retirement Planning &mdash; 14 Sep</option>
             </select>
-            <select>
-              <option value="" disabled selected>City *</option>
-              <option>Bhubaneswar</option>
-              <option>Cuttack</option>
-              <option>Sambalpur</option>
-              <option>Berhampur</option>
-              <option>Rourkela</option>
-              <option>Other</option>
+            <select required>
+              <option value="" disabled selected>Select City *</option>
+              <option>Bhubaneswar</option><option>Cuttack</option><option>Sambalpur</option>
+              <option>Berhampur</option><option>Rourkela</option><option>Other</option>
             </select>
-            <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Confirm Registration</button>
+            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Confirm Registration</button>
             <p class="events__form-note">Your details are only used for event coordination. We do not share or sell data.</p>
           </form>
         </div>
@@ -1444,36 +1022,36 @@
       </div>
       <div class="resources__grid">
         <div class="resource-card reveal">
-          <div class="resource-card__type">📄 PDF Guide</div>
+          <div class="resource-card__type">&#128196; PDF Guide</div>
           <h4 class="resource-card__title">Beginner's Guide to Investing in India</h4>
-          <p class="resource-card__desc">A 24-page handbook covering equities, mutual funds, FDs, gold, and real estate — written for first-time investors.</p>
-          <a href="#" class="resource-card__link">Download Free PDF →</a>
+          <p class="resource-card__desc">A 24-page handbook covering equities, mutual funds, FDs, gold, and real estate &mdash; written for first-time investors.</p>
+          <a href="#" class="resource-card__link">Download Free PDF &rarr;</a>
         </div>
         <div class="resource-card reveal reveal-delay-1">
-          <div class="resource-card__type">📊 Checklist</div>
+          <div class="resource-card__type">&#128202; Checklist</div>
           <h4 class="resource-card__title">Investment Fraud Red Flags Checklist</h4>
           <p class="resource-card__desc">Know the warning signs. A practical one-page checklist to identify Ponzi schemes, fraud brokers, and misleading advisors.</p>
-          <a href="#" class="resource-card__link">Download Checklist →</a>
+          <a href="#" class="resource-card__link">Download Checklist &rarr;</a>
         </div>
         <div class="resource-card reveal reveal-delay-2">
-          <div class="resource-card__type">🧮 Calculator</div>
+          <div class="resource-card__type">&#129518; Calculator</div>
           <h4 class="resource-card__title">SIP Return Calculator</h4>
           <p class="resource-card__desc">See how monthly SIP investments grow over time. Understand the power of compounding with this simple tool.</p>
-          <a href="#" class="resource-card__link">Use Calculator →</a>
+          <a href="#" class="resource-card__link">Use Calculator &rarr;</a>
         </div>
         <div class="resource-card reveal reveal-delay-3">
-          <div class="resource-card__type">📋 Explainer</div>
+          <div class="resource-card__type">&#128203; Explainer</div>
           <h4 class="resource-card__title">Understanding Your ITR: A Plain-Language Guide</h4>
-          <p class="resource-card__desc">What is ITR, which form to use, how to report investment income — explained without jargon for salaried professionals.</p>
-          <a href="#" class="resource-card__link">Read Guide →</a>
+          <p class="resource-card__desc">What is ITR, which form to use, how to report investment income &mdash; explained without jargon for salaried professionals.</p>
+          <a href="#" class="resource-card__link">Read Guide &rarr;</a>
         </div>
       </div>
       <div class="resources__cta reveal">
         <div class="resources__cta-text">
           <h3>Access the Full Resource Library</h3>
-          <p>Members get access to all guides, seminar recordings, and expert Q&A sessions. Free membership, always.</p>
+          <p>Members get access to all guides, seminar recordings, and expert Q&amp;A sessions. Free membership, always.</p>
         </div>
-        <a href="#join" class="btn btn-primary">Become a Member — It's Free</a>
+        <a href="#join" class="btn btn-primary">Become a Member &mdash; It's Free</a>
       </div>
     </div>
   </section>
@@ -1484,80 +1062,28 @@
       <div class="testimonials__header reveal">
         <span class="section-label">Voices from Our Community</span>
         <h2 class="section-title">What Our Members Say</h2>
-        <div class="divider" style="margin: 1rem auto;"></div>
+        <div class="divider" style="margin:1rem auto;"></div>
       </div>
       <div class="testimonials__grid">
         <div class="testimonial-card reveal">
           <p class="testimonial-card__text">"I attended the OIS Mutual Fund workshop not knowing the difference between a NAV and an NPS. By the end, I had a clear investment plan. The faculty are patient, practical, and have no agenda to sell anything."</p>
-          <div class="testimonial-card__author">
-            <div class="author-avatar">SR</div>
-            <div class="author-info">
-              <h5>Subhashree Rath</h5>
-              <p>Schoolteacher, Bhubaneswar</p>
-            </div>
-          </div>
+          <div class="testimonial-card__author"><div class="author-avatar">SR</div><div class="author-info"><h5>Subhashree Rath</h5><p>Schoolteacher, Bhubaneswar</p></div></div>
         </div>
         <div class="testimonial-card reveal reveal-delay-1">
           <p class="testimonial-card__text">"As a small business owner, I had no idea about capital gains tax. OIS's taxation seminar saved me from a very expensive mistake. I now recommend this society to every entrepreneur I know."</p>
-          <div class="testimonial-card__author">
-            <div class="author-avatar">PM</div>
-            <div class="author-info">
-              <h5>Pradyumna Mohapatra</h5>
-              <p>Business Owner, Cuttack</p>
-            </div>
-          </div>
+          <div class="testimonial-card__author"><div class="author-avatar">PM</div><div class="author-info"><h5>Pradyumna Mohapatra</h5><p>Business Owner, Cuttack</p></div></div>
         </div>
         <div class="testimonial-card reveal reveal-delay-2">
-          <p class="testimonial-card__text">"I was about to put ₹2 lakhs in a scheme that promised 30% annual returns. OIS's fraud awareness session made me realize it was a scam. This society genuinely protects investors."</p>
-          <div class="testimonial-card__author">
-            <div class="author-avatar">AN</div>
-            <div class="author-info">
-              <h5>Ananya Nanda</h5>
-              <p>Software Engineer, BBSR</p>
-            </div>
-          </div>
+          <p class="testimonial-card__text">"I was about to put Rs.2 lakhs in a scheme that promised 30% annual returns. OIS's fraud awareness session made me realize it was a scam. This society genuinely protects investors."</p>
+          <div class="testimonial-card__author"><div class="author-avatar">AN</div><div class="author-info"><h5>Ananya Nanda</h5><p>Software Engineer, Bhubaneswar</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- LEADERSHIP -->
-  <section class="leadership" id="leadership">
-    <div class="container">
-      <div class="leadership__header reveal">
-        <span class="section-label">Our Team</span>
-        <h2 class="section-title">Governing Council</h2>
-        <div class="divider"></div>
-        <p class="section-sub">OIS is governed by a volunteer committee of finance professionals, educators, and seasoned investors — all serving in a non-paid, non-commercial capacity.</p>
-      </div>
-      <div class="leadership__grid">
-        <div class="leader-card reveal">
-          <div class="leader-card__img"><div class="leader-initials">DM</div></div>
-          <div class="leader-card__body">
-            <h3 class="leader-card__name">Dr. Debendra Mishra</h3>
-            <p class="leader-card__title">Founder & President</p>
-            <p class="leader-card__bio">Retired IAS officer and economist with 30+ years in public finance and policy. Former Secretary, Finance Department, Government of Odisha.</p>
-          </div>
-        </div>
-        <div class="leader-card reveal reveal-delay-1">
-          <div class="leader-card__img"><div class="leader-initials">SP</div></div>
-          <div class="leader-card__body">
-            <h3 class="leader-card__name">Sunita Pradhan</h3>
-            <p class="leader-card__title">Secretary & Program Director</p>
-            <p class="leader-card__bio">Chartered Accountant with 20 years of practice. SEBI-registered Investment Advisor. Author of "Odia Lagani Gyan" — a financial guide in Odia language.</p>
-          </div>
-        </div>
-        <div class="leader-card reveal reveal-delay-2">
-          <div class="leader-card__img"><div class="leader-initials">RK</div></div>
-          <div class="leader-card__body">
-            <h3 class="leader-card__name">Ramesh Kumar Das</h3>
-            <p class="leader-card__title">Treasurer & Head, Research</p>
-            <p class="leader-card__bio">MBA Finance from IIM Calcutta. Former portfolio manager at HDFC AMC. Faculty for CFA exam coaching. Passionate about grassroots financial literacy.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+
 
   <!-- JOIN -->
   <section class="join" id="join">
@@ -1570,56 +1096,94 @@
           <p class="section-sub">Membership is free. We do not sell any financial products or services. Our only purpose is to help you invest better and protect yourself from financial harm.</p>
           <div class="join__benefits">
             <div class="join__benefit">
-              <div class="join__benefit-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
-              </div>
-              <div class="join__benefit-text">
-                <h4>Free Event Access</h4>
-                <p>Priority registration for all workshops, seminars, and webinars</p>
-              </div>
+              <div class="join__benefit-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg></div>
+              <div class="join__benefit-text"><h4>Free Event Access</h4><p>Priority registration for all workshops, seminars, and webinars</p></div>
             </div>
             <div class="join__benefit">
-              <div class="join__benefit-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-              </div>
-              <div class="join__benefit-text">
-                <h4>Full Resource Library</h4>
-                <p>Access all guides, templates, seminar recordings, and tools</p>
-              </div>
+              <div class="join__benefit-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+              <div class="join__benefit-text"><h4>Full Resource Library</h4><p>Access all guides, templates, seminar recordings, and tools</p></div>
             </div>
             <div class="join__benefit">
-              <div class="join__benefit-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <div class="join__benefit-text">
-                <h4>Investor Community</h4>
-                <p>Join our WhatsApp and Telegram community of 4,000+ members</p>
-              </div>
+              <div class="join__benefit-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+              <div class="join__benefit-text"><h4>Investor Community</h4><p>Join our WhatsApp and Telegram community of 4,000+ members</p></div>
             </div>
             <div class="join__benefit">
-              <div class="join__benefit-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-              </div>
-              <div class="join__benefit-text">
-                <h4>Expert Q&A Access</h4>
-                <p>Quarterly Ask-an-Expert sessions with CAs, CFPs, and SEBI RIAs</p>
-              </div>
+              <div class="join__benefit-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+              <div class="join__benefit-text"><h4>Expert Q&amp;A Access</h4><p>Quarterly Ask-an-Expert sessions with CAs, CFPs, and SEBI RIAs</p></div>
             </div>
           </div>
         </div>
         <div class="join__form-wrap reveal reveal-delay-2">
           <h3>Become a Member</h3>
           <p>Free lifetime membership. No spam. No product promotion. Just education.</p>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSc5bG_F3fb5ZR-THoFXB--x-UpiUuAgdcqrDDc-TQUM0sOnTg/viewform?embedded=true"
-            width="100%"
-            height="732"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            style="border:none; display:block; margin-top:1rem; border-radius:3px;"
-          >Loading…</iframe>
-          <p class="form-note" style="margin-top:0.75rem;">By joining, you agree to our privacy policy. We never sell your data. You may unsubscribe anytime.</p>
+          <form id="membershipForm" onsubmit="return handleMembership(event)">
+            <input type="hidden" name="access_key" value="e85f5610-b138-4666-8227-5d011cbacc4f"/>
+            <input type="hidden" name="subject" value="New OIS Membership Application"/>
+            <input type="hidden" name="from_name" value="Odisha Investors Society Website"/>
+            <input type="checkbox" name="botcheck" style="display:none;"/>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" name="first_name" class="form-input" placeholder="Ravi" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" name="last_name" class="form-input" placeholder="Sharma" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" name="mobile" class="form-input" placeholder="+91 98XXXXXXXX" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" name="email" class="form-input" placeholder="ravi@example.com" required/>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">City / District *</label>
+                <select name="city" class="form-input" required>
+                  <option value="" disabled selected>Select city</option>
+                  <option>Bhubaneswar</option>
+                  <option>Cuttack</option>
+                  <option>Sambalpur</option>
+                  <option>Berhampur</option>
+                  <option>Rourkela</option>
+                  <option>Puri</option>
+                  <option>Balasore</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Investing Experience</label>
+                <select name="experience" class="form-input">
+                  <option value="" disabled selected>Select level</option>
+                  <option>Beginner (not yet started)</option>
+                  <option>Less than 1 year</option>
+                  <option>1 &ndash; 3 years</option>
+                  <option>3 &ndash; 5 years</option>
+                  <option>5+ years</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Occupation</label>
+              <select name="occupation" class="form-input">
+                <option value="" disabled selected>Select occupation</option>
+                <option>Salaried Professional</option>
+                <option>Business Owner</option>
+                <option>Student</option>
+                <option>Retired</option>
+                <option>Self-Employed / Freelancer</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div id="membershipStatus" style="display:none; padding:0.85rem 1rem; border-radius:3px; font-size:0.85rem; margin-bottom:1rem;"></div>
+            <button type="submit" id="membershipBtn" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.9rem;">
+              Apply for Free Membership
+            </button>
+            <p class="form-note">By joining, you agree to our privacy policy. We never sell your data. You may unsubscribe anytime.</p>
+          </form>
         </div>
       </div>
     </div>
@@ -1636,64 +1200,48 @@
           <p class="section-sub reveal">We welcome queries about membership, partnerships, volunteer opportunities, and workshop invitations. We typically respond within 2 business days.</p>
           <div class="contact__info">
             <div class="contact__item reveal">
-              <div class="contact__item-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <div class="contact__item-text">
-                <h4>Registered Office</h4>
-                <p>Plot No. 45, Saheed Nagar,<br>Bhubaneswar – 751007, Odisha</p>
-              </div>
+              <div class="contact__item-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+              <div class="contact__item-text"><h4>Registered Office</h4><p>Plot No. 45, Saheed Nagar,<br>Bhubaneswar &ndash; 751007, Odisha</p></div>
             </div>
             <div class="contact__item reveal reveal-delay-1">
-              <div class="contact__item-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </div>
-              <div class="contact__item-text">
-                <h4>Email</h4>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cca5a2aaa38ca3a8a5bfa4ada5a2baa9bfb8a3bebfe2a3beab">[email&#160;protected]</a><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cabda5b8a1b9a2a5bab98aa5aea3b9a2aba3a4bcafb9bea5b8b9e4a5b8ad">[email&#160;protected]</a></p>
-              </div>
+              <div class="contact__item-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+              <div class="contact__item-text"><h4>Email</h4><p>info [at] odishainvestors.org<br>workshops [at] odishainvestors.org</p></div>
             </div>
             <div class="contact__item reveal reveal-delay-2">
-              <div class="contact__item-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              </div>
-              <div class="contact__item-text">
-                <h4>Phone / WhatsApp</h4>
-                <p>+91 94XXXXXXXX<br>Mon–Sat, 10 AM – 6 PM</p>
-              </div>
+              <div class="contact__item-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+              <div class="contact__item-text"><h4>Phone / WhatsApp</h4><p>+91 94XXXXXXXX<br>Mon&ndash;Sat, 10 AM &ndash; 6 PM</p></div>
             </div>
             <div class="contact__item reveal reveal-delay-3">
-              <div class="contact__item-icon">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-              </div>
-              <div class="contact__item-text">
-                <h4>Community</h4>
-                <p>WhatsApp Group · Telegram Channel<br>@OdishaInvestorsSociety</p>
-              </div>
+              <div class="contact__item-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+              <div class="contact__item-text"><h4>Community</h4><p>WhatsApp Group &middot; Telegram Channel<br>@OdishaInvestorsSociety</p></div>
             </div>
           </div>
         </div>
         <div class="contact__form reveal reveal-delay-2">
           <h3>Send Us a Message</h3>
           <p>For general inquiries, partnership proposals, or to invite us to your institution.</p>
-          <form onsubmit="return handleContact(event)">
+          <form id="contactForm" onsubmit="return handleContact(event)">
+            <input type="hidden" name="access_key" value="2bb7118a-9b9c-4dd1-8d02-83487a13b2d2"/>
+            <input type="hidden" name="subject" value="New Contact Message — OIS Website"/>
+            <input type="hidden" name="from_name" value="Odisha Investors Society Website"/>
+            <input type="checkbox" name="botcheck" style="display:none;"/>
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-input" placeholder="Your name" required/>
+                <label class="form-label">Name *</label>
+                <input type="text" name="name" class="form-input" placeholder="Your name" required/>
               </div>
               <div class="form-group">
-                <label class="form-label">Phone</label>
-                <input type="tel" class="form-input" placeholder="+91 98..." required/>
+                <label class="form-label">Phone *</label>
+                <input type="tel" name="phone" class="form-input" placeholder="+91 98..." required/>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Email</label>
-              <input type="email" class="form-input" placeholder="you@example.com"/>
+              <input type="email" name="email" class="form-input" placeholder="you@example.com"/>
             </div>
             <div class="form-group">
-              <label class="form-label">Subject</label>
-              <select class="form-input" required>
+              <label class="form-label">Subject *</label>
+              <select name="inquiry_subject" class="form-input" required>
                 <option value="" disabled selected>Select subject</option>
                 <option>General Inquiry</option>
                 <option>Workshop / Event Partnership</option>
@@ -1704,10 +1252,11 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-input" rows="4" placeholder="Tell us how we can help..." style="resize:vertical;" required></textarea>
+              <label class="form-label">Message *</label>
+              <textarea name="message" class="form-input" rows="4" placeholder="Tell us how we can help..." style="resize:vertical;" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding: 0.9rem;">Send Message</button>
+            <div id="contactStatus" style="display:none; padding:0.85rem 1rem; border-radius:3px; font-size:0.85rem; margin-bottom:1rem;"></div>
+            <button type="submit" id="contactBtn" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.9rem;">Send Message</button>
           </form>
         </div>
       </div>
@@ -1719,13 +1268,67 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <div class="navbar__brand" style="margin-bottom: 1rem;">
+          <div class="navbar__brand" style="margin-bottom:1rem;">
             <div class="brand-emblem">
-              <svg viewBox="0 0 26 26" fill="none"><rect x="3" y="14" width="4" height="9" fill="#c8a96e"/><rect x="9" y="9" width="4" height="14" fill="#c8a96e" opacity="0.75"/><rect x="15" y="5" width="4" height="18" fill="#c8a96e" opacity="0.55"/><rect x="21" y="2" width="2" height="21" fill="#c8a96e" opacity="0.4"/><path d="M4 14 L11 9 L17 5 L22 2" stroke="#c8a96e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gG2"x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" style="stop-color:#c8a96e"/>
+                  <stop offset="100%" style="stop-color:#dfc28a"/>
+                </linearGradient>
+              </defs>
+              <!-- Outer rim -->
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#c8a96e" stroke-width="3" opacity="0.9"/>
+              <!-- Inner ring -->
+              <circle cx="50" cy="50" r="24" fill="none" stroke="#c8a96e" stroke-width="1" opacity="0.4"/>
+              <!-- Hub -->
+              <circle cx="50" cy="50" r="8" fill="none" stroke="#c8a96e" stroke-width="2.5" opacity="0.9"/>
+              <circle cx="50" cy="50" r="5" fill="#c8a96e" opacity="0.35"/>
+              <!-- 8 main spokes -->
+              <line x1="50" y1="42" x2="50" y2="26" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="55.66" y1="44.34" x2="66.97" y2="33.03" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="58" y1="50" x2="74" y2="50" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="55.66" y1="55.66" x2="66.97" y2="66.97" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="50" y1="58" x2="50" y2="74" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="44.34" y1="55.66" x2="33.03" y2="66.97" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="42" y1="50" x2="26" y2="50" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="44.34" y1="44.34" x2="33.03" y2="33.03" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- 8 minor spokes -->
+              <line x1="52.83" y1="42.83" x2="61.21" y2="34.44" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="57.17" y1="47.17" x2="69.56" y2="38.79" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="57.17" y1="52.83" x2="69.56" y2="61.21" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="52.83" y1="57.17" x2="61.21" y2="65.56" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="47.17" y1="57.17" x2="38.79" y2="65.56" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="42.83" y1="52.83" x2="30.44" y2="61.21" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="42.83" y1="47.17" x2="30.44" y2="38.79" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="47.17" y1="42.83" x2="38.79" y2="34.44" stroke="#c8a96e" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <!-- Rim bead dots (16 every 22.5°) -->
+              <circle cx="50"    cy="12"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="64.14" cy="15.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="75.15" cy="24.85" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="82.14" cy="37.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="88"    cy="50"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="82.14" cy="62.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="75.15" cy="75.15" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="64.14" cy="84.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="50"    cy="88"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="35.86" cy="84.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="24.85" cy="75.15" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="17.86" cy="62.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="12"    cy="50"    r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="17.86" cy="37.14" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="24.85" cy="24.85" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <circle cx="35.86" cy="15.86" r="1.6" fill="#c8a96e" opacity="0.75"/>
+              <!-- Growth line -->
+              <polyline points="38,61 43.5,55.5 50,50 56.5,44.5 62,39"
+                fill="none" stroke="url(#gG2)" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+              <polygon points="62,39 57.5,38.5 61,43" fill="#dfc28a"/>
+            </svg>
             </div>
             <div class="brand-text">
               <div class="brand-name">Odisha Investors Society</div>
-              <div class="brand-tagline">Investor Education · Est. 2015</div>
+              <div class="brand-tagline">Investor Education &middot; Est. 2015</div>
             </div>
           </div>
           <p>A registered non-profit organization (Section 8, Companies Act 2013) dedicated to financial literacy and investor education across Odisha. We do not sell financial products or services.</p>
@@ -1734,8 +1337,7 @@
           <h5>Organization</h5>
           <ul>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#mission">Mission & Vision</a></li>
-            <li><a href="#leadership">Governing Council</a></li>
+            <li><a href="#mission">Mission &amp; Vision</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -1759,9 +1361,9 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2026 Odisha Investors Society. All rights reserved.</span>
-        <span>CIN: U85300OR2015NPL023XXX &nbsp;·&nbsp; PAN: AABCO1234X</span>
-        <span>Privacy Policy · Disclaimer</span>
+        <span>&copy; 2026 Odisha Investors Society. All rights reserved.</span>
+        <span>CIN: U85300OR2015NPL023XXX &nbsp;&middot;&nbsp; PAN: AABCO1234X</span>
+        <span>Privacy Policy &middot; Disclaimer</span>
       </div>
       <div class="footer__disclaimer">
         <strong style="color:rgba(255,255,255,0.5);">Disclaimer:</strong> The Odisha Investors Society is an educational non-profit organization. We do not provide investment advice, portfolio management, or financial planning services. All educational content is for informational purposes only. Past performance of any investment is not indicative of future results. Please consult a SEBI-registered financial advisor before making investment decisions.
@@ -1769,15 +1371,16 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // === STICKY NAV ===
+  <script>
+    // STICKY NAV
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) navbar.style.boxShadow = '0 2px 20px rgba(26,39,68,0.12)';
-      else navbar.style.boxShadow = '0 1px 3px rgba(26,39,68,0.08)';
+      navbar.style.boxShadow = window.scrollY > 80
+        ? '0 2px 20px rgba(26,39,68,0.12)'
+        : '0 1px 3px rgba(26,39,68,0.08)';
     });
 
-    // === MOBILE MENU ===
+    // MOBILE MENU
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.add('open');
     });
@@ -1786,8 +1389,7 @@
       document.getElementById('mobileMenu').classList.remove('open');
     }
 
-    // === SCROLL REVEAL ===
-    const revealEls = document.querySelectorAll('.reveal');
+    // SCROLL REVEAL
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1796,37 +1398,149 @@
         }
       });
     }, { threshold: 0.08 });
-    revealEls.forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // === FORM HANDLERS ===
+    // MEMBERSHIP FORM — Web3Forms
+    async function handleMembership(e) {
+      e.preventDefault();
+      const form = document.getElementById('membershipForm');
+      const btn  = document.getElementById('membershipBtn');
+      const status = document.getElementById('membershipStatus');
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+        if (json.success) {
+          status.style.display = 'block';
+          status.style.background = '#e8f5e9';
+          status.style.color = '#2d6a4f';
+          status.style.border = '1px solid #a5d6a7';
+          status.textContent = '✓ Application received! Welcome to OIS. We will be in touch shortly.';
+          form.reset();
+          btn.textContent = 'Application Submitted';
+          btn.style.background = '#2d6a4f';
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err) {
+        status.style.display = 'block';
+        status.style.background = '#fff3cd';
+        status.style.color = '#856404';
+        status.style.border = '1px solid #ffc107';
+        status.textContent = 'Something went wrong. Please try again or email us directly.';
+        btn.disabled = false;
+        btn.textContent = 'Apply for Free Membership';
+      }
+      return false;
+    }
+
+    // EVENT REGISTRATION FORM
     function handleRegistration(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = '✓ Registered! We will confirm via WhatsApp.';
-      btn.style.background = '#2d6a4f';
-      btn.disabled = true;
-      return false;
-    }
-    function handleMembership(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = '✓ Application Received! Welcome to OIS.';
-      btn.style.background = '#2d6a4f';
-      btn.disabled = true;
-      return false;
-    }
-    function handleContact(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = '✓ Message Sent! We will respond within 2 business days.';
+      btn.textContent = 'Registered! We will confirm via WhatsApp.';
       btn.style.background = '#2d6a4f';
       btn.disabled = true;
       return false;
     }
 
-    // === ACTIVE NAV HIGHLIGHT ===
-    const sections = document.querySelectorAll('section[id], div[id]');
+    // CONTACT FORM — Web3Forms
+    async function handleContact(e) {
+      e.preventDefault();
+      const form   = document.getElementById('contactForm');
+      const btn    = document.getElementById('contactBtn');
+      const status = document.getElementById('contactStatus');
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      const data = new FormData(form);
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          status.style.display  = 'block';
+          status.style.background = '#e8f5e9';
+          status.style.color    = '#2d6a4f';
+          status.style.border   = '1px solid #a5d6a7';
+          status.textContent    = '✓ Message received! We will respond within 2 business days.';
+          form.reset();
+          btn.textContent       = 'Message Sent';
+          btn.style.background  = '#2d6a4f';
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err) {
+        status.style.display  = 'block';
+        status.style.background = '#fff3cd';
+        status.style.color    = '#856404';
+        status.style.border   = '1px solid #ffc107';
+        status.textContent    = 'Something went wrong. Please email us directly at info [at] odishainvestors.org';
+        btn.disabled          = false;
+        btn.textContent       = 'Send Message';
+      }
+      return false;
+    }
+
+    // PORTFOLIO REVIEW FORM — Web3Forms
+    async function handlePortfolioReview(e) {
+      e.preventDefault();
+      const form   = document.getElementById('portfolioReviewForm');
+      const btn    = document.getElementById('portfolioReviewBtn');
+      const status = document.getElementById('portfolioReviewStatus');
+
+      btn.disabled = true;
+      btn.innerHTML = 'Submitting…';
+
+      const data = new FormData(form);
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          status.style.display    = 'block';
+          status.style.background = '#e8f5e9';
+          status.style.color      = '#2d6a4f';
+          status.style.border     = '1px solid #a5d6a7';
+          status.textContent      = '✓ Request received! Our team will contact you within 2 working days to schedule your call.';
+          form.reset();
+          btn.innerHTML = '✓ Request Submitted';
+          btn.style.background = '#2d6a4f';
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      } catch (err) {
+        status.style.display    = 'block';
+        status.style.background = '#fff3cd';
+        status.style.color      = '#856404';
+        status.style.border     = '1px solid #ffc107';
+        status.textContent      = 'Something went wrong. Please call or WhatsApp us directly to book your review.';
+        btn.disabled  = false;
+        btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Request My Free Portfolio Review';
+      }
+      return false;
+    }
+
+    // ACTIVE NAV HIGHLIGHT
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar__nav a');
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + current;
+        link.style.color = isActive ? 'var(--navy)' : '';
+        link.style.background = isActive ? 'var(--border-light)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
