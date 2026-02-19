@@ -83,7 +83,7 @@
     /* HERO */
     .hero { background: var(--navy-deep); position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, transparent 50%), repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px); }
-    .hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center; padding: 5rem 0; }
+    .hero__inner { position: relative; z-index: 1; padding: 5rem 0; max-width: 780px; }
     .hero__badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.15); border: 1px solid rgba(200,169,110,0.3); color: var(--gold-light); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 2px; margin-bottom: 1.75rem; }
     .hero__badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
     .hero__headline { font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; }
@@ -94,12 +94,6 @@
     .hero__stat { background: rgba(255,255,255,0.03); padding: 1.25rem 1rem; text-align: center; }
     .hero__stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--gold-light); line-height: 1; }
     .hero__stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.35rem; }
-    .hero__card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 2rem; }
-    .hero__card-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .hero__card-title { font-family: var(--font-serif); font-size: 1.25rem; color: var(--white); margin-bottom: 0.5rem; }
-    .hero__card-meta { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.6; }
-    .hero__card-meta span { display: block; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .hero__card-meta span:last-child { border-bottom: none; }
 
 
     /* ABOUT */
@@ -263,7 +257,6 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .hero__inner { grid-template-columns: 1fr; }
-      .hero__card { display: none; }
       .mission__pillars { grid-template-columns: repeat(2, 1fr); }
       .programs__grid { grid-template-columns: 1fr 1fr; }
       .resources__grid { grid-template-columns: 1fr 1fr; }
@@ -588,7 +581,7 @@
         <nav class="navbar__nav">
           <a href="#about">About</a>
           <a href="#programs">Programs</a>
-          <a href="#events">Events</a>
+          <a href="#events">Workshops</a>
           <a href="#resources">Resources</a>
           <a href="#contact">Contact</a>
           <a href="#portfolio-review" style="color:var(--gold);font-weight:600;">Free Review &#9733;</a>
@@ -606,7 +599,7 @@
     <button class="mobile-menu__close" id="menuClose">&#10005;</button>
     <a href="#about" onclick="closeMobile()">About</a>
     <a href="#programs" onclick="closeMobile()">Programs</a>
-    <a href="#events" onclick="closeMobile()">Events</a>
+    <a href="#events" onclick="closeMobile()">Workshops</a>
     <a href="#resources" onclick="closeMobile()">Resources</a>
     <a href="#portfolio-review" onclick="closeMobile()" style="color:var(--gold);">Free Portfolio Review</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -632,18 +625,7 @@
             <div class="hero__stat"><div class="hero__stat-num">10 Yrs</div><div class="hero__stat-label">Of Service</div></div>
           </div>
         </div>
-        <div class="hero__card">
-          <div class="hero__card-label">Next Workshop</div>
-          <div class="hero__card-title">Mutual Funds for Beginners</div>
-          <div class="hero__card-meta">
-            <span>&#128197;&nbsp; 25 July 2025, Saturday</span>
-            <span>&#9200;&nbsp; 10:00 AM &ndash; 1:00 PM</span>
-            <span>&#128205;&nbsp; FICCI Auditorium, Bhubaneswar</span>
-            <span>&#128100;&nbsp; Open to All &middot; Free Entry</span>
-            <span>&#128278;&nbsp; Registration Required</span>
-          </div>
-          <a href="#events" class="btn btn-gold" style="width:100%;justify-content:center;">Reserve Your Seat</a>
-        </div>
+
       </div>
     </div>
   </section>
@@ -956,57 +938,116 @@
     </div>
   </section>
 
-  <!-- EVENTS -->
+  <!-- WORKSHOPS INTEREST -->
   <section class="events" id="events">
     <div class="container">
       <div class="events__inner">
+
+        <!-- LEFT: Workshop categories -->
         <div>
-          <span class="section-label reveal">Schedule</span>
-          <h2 class="section-title reveal">Upcoming Events</h2>
+          <span class="section-label reveal">Workshops &amp; Seminars</span>
+          <h2 class="section-title reveal">Register Your Interest</h2>
           <div class="divider reveal"></div>
-          <p class="section-sub reveal" style="margin-bottom:0;">All events are free or offered at a nominal fee. Prior registration is appreciated to help us plan seating and materials.</p>
-          <div class="events__list">
+          <p class="section-sub reveal">We conduct free and low-cost investor education workshops across Odisha. We don't have fixed schedules — but when a workshop in your category and city is confirmed, we will notify you first.</p>
+
+          <div class="events__list" style="margin-top:2rem;">
             <div class="event-item featured reveal">
-              <div class="event-date"><div class="day">25</div><div class="month">Jul</div></div>
-              <div class="event-info"><h4>Mutual Funds for Beginners</h4><p>FICCI Auditorium, Bhubaneswar &middot; 10 AM &ndash; 1 PM</p><span class="event-badge badge-free">Free Entry</span></div>
+              <div class="event-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </div>
+              <div class="event-info">
+                <h4>Mutual Funds &amp; SIP Basics</h4>
+                <p>Understanding fund categories, SIP discipline, and how to pick funds aligned with your goals.</p>
+              </div>
             </div>
             <div class="event-item reveal reveal-delay-1">
-              <div class="event-date"><div class="day">10</div><div class="month">Aug</div></div>
-              <div class="event-info"><h4>Tax Planning for Salaried Professionals</h4><p>Hotel Mayfair Lagoon, Bhubaneswar &middot; 9:30 AM &ndash; 12:30 PM</p><span class="event-badge badge-reg">Rs.200 Nominal Fee</span></div>
+              <div class="event-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              </div>
+              <div class="event-info">
+                <h4>Tax Planning for Salaried Professionals</h4>
+                <p>Section 80C, HRA, NPS, and smart year-end tax saving strategies for employees.</p>
+              </div>
             </div>
             <div class="event-item reveal reveal-delay-2">
-              <div class="event-date"><div class="day">22</div><div class="month">Aug</div></div>
-              <div class="event-info"><h4>Stock Market Basics &mdash; Cuttack Chapter</h4><p>Shanti Stupa Hall, Cuttack &middot; 5 PM &ndash; 7 PM</p><span class="event-badge badge-free">Free Entry</span></div>
+              <div class="event-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+              </div>
+              <div class="event-info">
+                <h4>Stock Market &amp; Equity Investing</h4>
+                <p>How stock markets work, reading financials, avoiding common traps, and building a long-term equity portfolio.</p>
+              </div>
             </div>
             <div class="event-item reveal reveal-delay-3">
-              <div class="event-date"><div class="day">14</div><div class="month">Sep</div></div>
-              <div class="event-info"><h4>Retirement Planning at Every Age</h4><p>Sambalpur Chapter &middot; Venue TBA</p><span class="event-badge badge-free">Free Entry</span></div>
+              <div class="event-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="event-info">
+                <h4>Retirement &amp; Long-Term Financial Planning</h4>
+                <p>NPS, EPF, annuities, and building a corpus that sustains you through retirement.</p>
+              </div>
+            </div>
+            <div class="event-item reveal reveal-delay-3">
+              <div class="event-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              </div>
+              <div class="event-info">
+                <h4>Scam Awareness &amp; Investor Protection</h4>
+                <p>Identifying Ponzi schemes, mis-selling, and how to file complaints with SEBI and RBI.</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- RIGHT: Interest form -->
         <div class="events__register reveal reveal-delay-2">
-          <h3>Register for an Event</h3>
-          <p>Fill in your details and we will confirm your seat via WhatsApp/email. No payment required for free events.</p>
-          <form class="events__form" onsubmit="return handleRegistration(event)">
-            <input type="text" placeholder="Full Name *" required/>
-            <input type="tel" placeholder="Mobile Number *" required/>
-            <input type="email" placeholder="Email Address"/>
-            <select required>
-              <option value="" disabled selected>Select Event *</option>
-              <option>Mutual Funds for Beginners &mdash; 25 Jul</option>
-              <option>Tax Planning for Salaried Professionals &mdash; 10 Aug</option>
-              <option>Stock Market Basics (Cuttack) &mdash; 22 Aug</option>
-              <option>Retirement Planning &mdash; 14 Sep</option>
+          <h3>Notify Me When Slots Open</h3>
+          <p>Tell us your preferred topics and city. We'll reach out as soon as a workshop is scheduled near you — no spam, ever.</p>
+          <form class="events__form" id="workshopInterestForm" onsubmit="return handleWorkshopInterest(event)">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE"/>
+            <input type="hidden" name="subject" value="Workshop Interest Registration — OIS Website"/>
+            <input type="hidden" name="from_name" value="Odisha Investors Society Website"/>
+            <input type="checkbox" name="botcheck" style="display:none;"/>
+            <input type="text" name="full_name" placeholder="Full Name *" required/>
+            <input type="tel" name="mobile" placeholder="Mobile Number *" required/>
+            <input type="email" name="email" placeholder="Email Address"/>
+            <select name="city" required>
+              <option value="" disabled selected>Your City *</option>
+              <option>Bhubaneswar</option>
+              <option>Cuttack</option>
+              <option>Sambalpur</option>
+              <option>Berhampur</option>
+              <option>Rourkela</option>
+              <option>Puri</option>
+              <option>Balasore</option>
+              <option>Other (Odisha)</option>
             </select>
-            <select required>
-              <option value="" disabled selected>Select City *</option>
-              <option>Bhubaneswar</option><option>Cuttack</option><option>Sambalpur</option>
-              <option>Berhampur</option><option>Rourkela</option><option>Other</option>
-            </select>
-            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Confirm Registration</button>
-            <p class="events__form-note">Your details are only used for event coordination. We do not share or sell data.</p>
+            <div style="margin-top:0.25rem;">
+              <p style="font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Topics of Interest *</p>
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:rgba(255,255,255,0.7);cursor:pointer;">
+                  <input type="checkbox" name="topic_mf" value="Mutual Funds & SIP" style="accent-color:var(--gold);"/> Mutual Funds &amp; SIP
+                </label>
+                <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:rgba(255,255,255,0.7);cursor:pointer;">
+                  <input type="checkbox" name="topic_tax" value="Tax Planning" style="accent-color:var(--gold);"/> Tax Planning
+                </label>
+                <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:rgba(255,255,255,0.7);cursor:pointer;">
+                  <input type="checkbox" name="topic_stocks" value="Stock Market & Equity" style="accent-color:var(--gold);"/> Stock Market &amp; Equity
+                </label>
+                <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:rgba(255,255,255,0.7);cursor:pointer;">
+                  <input type="checkbox" name="topic_retirement" value="Retirement Planning" style="accent-color:var(--gold);"/> Retirement Planning
+                </label>
+                <label style="display:flex;align-items:center;gap:0.6rem;font-size:0.84rem;color:rgba(255,255,255,0.7);cursor:pointer;">
+                  <input type="checkbox" name="topic_scam" value="Scam Awareness" style="accent-color:var(--gold);"/> Scam Awareness &amp; Investor Protection
+                </label>
+              </div>
+            </div>
+            <div id="workshopInterestStatus" style="display:none; padding:0.75rem 1rem; border-radius:3px; font-size:0.83rem;"></div>
+            <button type="submit" id="workshopInterestBtn" class="btn btn-gold" style="width:100%;justify-content:center;">Notify Me When Available</button>
+            <p class="events__form-note">We will only contact you when a relevant workshop opens up. No marketing emails.</p>
           </form>
         </div>
+
       </div>
     </div>
   </section>
@@ -1448,6 +1489,41 @@
       btn.textContent = 'Registered! We will confirm via WhatsApp.';
       btn.style.background = '#2d6a4f';
       btn.disabled = true;
+      return false;
+    }
+
+    // WORKSHOP INTEREST FORM — Web3Forms
+    async function handleWorkshopInterest(e) {
+      e.preventDefault();
+      const form   = document.getElementById('workshopInterestForm');
+      const btn    = document.getElementById('workshopInterestBtn');
+      const status = document.getElementById('workshopInterestStatus');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      const data = new FormData(form);
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          status.style.display    = 'block';
+          status.style.background = 'rgba(45,106,79,0.2)';
+          status.style.color      = '#a8d5b5';
+          status.style.border     = '1px solid rgba(45,106,79,0.4)';
+          status.textContent      = '✓ Registered! We will notify you when a workshop in your area opens up.';
+          form.reset();
+          btn.textContent = '✓ You are on the list!';
+          btn.style.background = '#2d6a4f';
+          btn.style.color = '#fff';
+        } else { throw new Error(); }
+      } catch {
+        status.style.display    = 'block';
+        status.style.background = 'rgba(200,169,110,0.15)';
+        status.style.color      = 'var(--gold)';
+        status.style.border     = '1px solid rgba(200,169,110,0.3)';
+        status.textContent      = 'Something went wrong. Please WhatsApp or email us directly.';
+        btn.disabled = false;
+        btn.textContent = 'Notify Me When Available';
+      }
       return false;
     }
 
